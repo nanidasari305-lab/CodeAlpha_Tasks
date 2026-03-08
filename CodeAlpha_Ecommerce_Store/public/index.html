@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurora | Premium E-commerce Experience</title>
+    <meta name="description" content="Discover curated premium products with a cinematic shopping experience.">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo text-gradient">AURORA</a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="#products">Products</a>
+                    <a href="auth.html" id="auth-link">Login</a>
+                </div>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cart-count">0</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero container fade-in">
+            <h1>Experience <span class="text-gradient">Pure Luxury</span></h1>
+            <p>
+                Curated collection of premium goods designed for those who appreciate the finer things in life.
+            </p>
+            <a href="#products" class="btn-primary">Shop Now</a>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="container">
+            <h2 class="section-title">Featured Collections</h2>
+
+            <!-- Category Filter -->
+            <div class="category-filters"
+                style="display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-bottom: 3rem; flex-wrap: wrap;">
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="filter-btn active" data-category="">All Collections</button>
+                    <button class="filter-btn" data-category="Men">Men</button>
+                    <button class="filter-btn" data-category="Women">Women</button>
+                    <button class="filter-btn" data-category="Accessories">Accessories</button>
+                    <button class="filter-btn" data-category="Watches">Watches</button>
+                </div>
+
+                <div class="sort-container" style="display: flex; align-items: center; gap: 0.8rem;">
+                    <label for="sort-products" style="font-size: 0.9rem; color: var(--text-secondary);">Sort by:</label>
+                    <select id="sort-products" class="glass"
+                        style="padding: 0.5rem 1rem; border-radius: 12px; font-size: 0.9rem; outline: none;">
+                        <option value="newest">Newest First</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="products-container" class="products-grid">
+                <!-- Products will be injected here -->
+                <div class="loading">
+                    <i class="fa-solid fa-circle-notch fa-spin fa-2x"></i>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">AURORA</div>
+                    <p>Experience the pinnacle of luxury commerce. Crafted for those who appreciate the finer things in
+                        life.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Collections</h4>
+                    <ul>
+                        <li><a href="index.html#products">New Arrivals</a></li>
+                        <li><a href="index.html#products">Men</a></li>
+                        <li><a href="index.html#products">Women</a></li>
+                        <li><a href="index.html#products">Accessories</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>© 2026 Aurora Premium Store. All rights reserved.</div>
+                <div style="display: flex; gap: 2rem;">
+                    <a href="#" style="color: inherit;">Privacy Policy</a>
+                    <a href="#" style="color: inherit;">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

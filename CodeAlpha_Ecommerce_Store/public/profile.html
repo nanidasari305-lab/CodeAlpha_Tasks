@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | Aurora</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo text-gradient">AURORA</a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#products">Products</a>
+                    <a href="auth.html" id="auth-link">Login</a>
+                </div>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cart-count">0</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="profile-header">
+            <div>
+                <h1 style="font-size: 3rem;">My Profile</h1>
+                <p id="user-info" style="color: var(--text-secondary);"></p>
+            </div>
+            <button id="logout-btn"
+                style="color: #ff4d4d; border: 1px solid rgba(255, 77, 77, 0.3); padding: 0.5rem 1.5rem; border-radius: 12px; height: fit-content;">Logout</button>
+        </div>
+
+        <h2 style="margin-bottom: var(--spacing-md);">Order History</h2>
+        <div id="orders-container" class="fade-in">
+            <div class="loading" style="text-align: center; padding: 3rem;">
+                <i class="fa-solid fa-circle-notch fa-spin fa-2x"></i>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <div>© 2026 Aurora Premium Store. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+
+</html>

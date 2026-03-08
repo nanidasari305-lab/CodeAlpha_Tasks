@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Shopping Bag | Aurora</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo text-gradient">AURORA</a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#products">Products</a>
+                    <a href="auth.html" id="auth-link">Login</a>
+                </div>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cart-count">0</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1 class="section-title fade-in" style="text-align: left; margin-top: var(--spacing-md);">Shopping Bag</h1>
+        <div id="cart-page" class="fade-in cart-grid">
+            <!-- Cart items -->
+            <div id="cart-items" class="glass cart-items-container">
+                <div class="loading">
+                    <i class="fa-solid fa-circle-notch fa-spin fa-2x"></i>
+                </div>
+            </div>
+
+            <!-- Summary -->
+            <div id="cart-summary" class="glass cart-summary-card">
+                <h3 style="margin-bottom: 1.5rem;">Order Summary</h3>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                    <span>Subtotal</span>
+                    <span id="subtotal">$0.00</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                    <span>Shipping</span>
+                    <span style="color: var(--accent-secondary);">FREE</span>
+                </div>
+                <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 1.5rem 0;">
+                <div
+                    style="display: flex; justify-content: space-between; margin-bottom: 2rem; font-size: 1.4rem; font-weight: 700;">
+                    <span>Total</span>
+                    <span id="total-price">$0.00</span>
+                </div>
+                <button id="checkout-btn" class="btn-primary" style="width: 100%;">Proceed to Checkout</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom" style="border-top: none; justify-content: center;">
+                <div>© 2026 Aurora Premium Store. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+
+</html>

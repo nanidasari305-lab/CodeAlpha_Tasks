@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | Aurora</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo text-gradient">AURORA</a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#products">Products</a>
+                    <a href="auth.html" id="auth-link">Login</a>
+                </div>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cart-count">0</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="product-details" class="fade-in product-details-grid">
+            <!-- Product details will be injected here -->
+            <div class="loading">
+                <i class="fa-solid fa-circle-notch fa-spin fa-2x"></i>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom" style="border-top: none; justify-content: center;">
+                <div>© 2026 Aurora Premium Store. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/product-details.js"></script>
+</body>
+
+</html>
