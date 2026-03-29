@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Social Media</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">Social<span class="text-primary">App</span></h1>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search...">
+            </div>
+            <div class="nav-links">
+                <button id="theme-btn" class="icon-btn" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+                
+                <!-- Logged Out State -->
+                <div id="logged-out-nav">
+                    <button class="btn btn-outline" onclick="ui.showModal('login-modal')">Login</button>
+                    <button class="btn btn-primary" onclick="ui.showModal('register-modal')">Register</button>
+                </div>
+                
+                <!-- Logged In State -->
+                <div id="logged-in-nav" class="hidden">
+                    <button class="icon-btn" id="home-link" title="Home"><i class="fas fa-home"></i></button>
+                    <button class="btn btn-primary" onclick="ui.showModal('create-post-modal')">
+                        <i class="fas fa-plus"></i> Create Post
+                    </button>
+                    <div class="profile-dropdown">
+                        <img src="https://via.placeholder.com/40" alt="Profile" id="nav-profile-pic" class="avatar-small" onclick="ui.toggleDropdown()">
+                        <div class="dropdown-menu hidden" id="profile-dropdown-menu">
+                            <a href="#" id="profile-link"><i class="fas fa-user"></i> Profile</a>
+                            <a href="#" id="settings-link"><i class="fas fa-cog"></i> Settings</a>
+                            <a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Left Sidebar (Navigation) - Desktop Only -->
+        <aside class="left-sidebar hidden" id="left-sidebar">
+            <div class="sidebar-menu">
+                <a href="#" class="menu-item active"><i class="fas fa-home"></i> <span>Home</span></a>
+                <a href="#" class="menu-item"><i class="fas fa-bell"></i> <span>Notifications</span></a>
+                <a href="#" class="menu-item"><i class="fas fa-envelope"></i> <span>Messages</span></a>
+                <a href="#" class="menu-item" id="sidebar-profile-link"><i class="fas fa-user"></i> <span>Profile</span></a>
+            </div>
+        </aside>
+
+        <!-- Feed / Main Content Area -->
+        <div class="main-feed" id="main-content-area">
+            <!-- Loading indicator -->
+            <div id="feed-loader" class="loader-container">
+                <div class="loader"></div>
+            </div>
+            <!-- Feed will be injected here -->
+            <div id="feed-container"></div>
+        </div>
+
+        <!-- Right Sidebar (Suggestions) -->
+        <aside class="right-sidebar hidden" id="right-sidebar">
+            <div class="card suggestions-card">
+                <h3>Suggestions For You</h3>
+                <div class="suggestion-list" id="suggestion-list">
+                    <!-- Suggestions injected here -->
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Modals -->
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="ui.hideModal('login-modal')">&times;</span>
+            <h2>Welcome Back</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+                <p class="text-center mt-1">Don't have an account? <a href="#" onclick="ui.hideModal('login-modal'); ui.showModal('register-modal')">Register here</a></p>
+            </form>
+            <div id="login-error" class="error-msg hidden"></div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="register-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="ui.hideModal('register-modal')">&times;</span>
+            <h2>Create an Account</h2>
+            <form id="register-form">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="reg-username" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="reg-email" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="reg-password" required minlength="6">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
+                <p class="text-center mt-1">Already have an account? <a href="#" onclick="ui.hideModal('register-modal'); ui.showModal('login-modal')">Login here</a></p>
+            </form>
+            <div id="reg-error" class="error-msg hidden"></div>
+        </div>
+    </div>
+
+    <!-- Create Post Modal -->
+    <div id="create-post-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="ui.hideModal('create-post-modal')">&times;</span>
+            <h2>Create New Post</h2>
+            <form id="create-post-form">
+                <div class="form-group">
+                    <textarea id="post-content" rows="4" placeholder="What's on your mind?" required maxlength="500"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="post-image" class="file-upload-label">
+                        <i class="fas fa-image"></i> Add an Image
+                    </label>
+                    <input type="file" id="post-image" accept="image/*" class="hidden-input">
+                    <div id="image-preview" class="hidden mt-1"></div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" id="create-post-btn">Post</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div id="edit-profile-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="ui.hideModal('edit-profile-modal')">&times;</span>
+            <h2>Edit Profile</h2>
+            <form id="edit-profile-form">
+                <div class="form-group text-center">
+                    <img src="" id="edit-profile-pic-preview" class="avatar-large mb-1" alt="Profile">
+                    <br>
+                    <label for="edit-profile-pic" class="btn btn-outline btn-sm">Change Photo</label>
+                    <input type="file" id="edit-profile-pic" accept="image/*" class="hidden-input">
+                </div>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="edit-username" required>
+                </div>
+                <div class="form-group">
+                    <label>Bio</label>
+                    <textarea id="edit-bio" rows="3" maxlength="160"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
